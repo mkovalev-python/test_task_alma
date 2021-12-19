@@ -4,7 +4,7 @@ from celery import Celery
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "test_task_alma.settings")
 
 app = Celery("test_task_alma")
-app.config_from_object("django.conf:settings", namespace='CELERY')
+app.config_from_object("django.conf:settings", namespace="CELERY")
 
 # Load task modules from all registered Django app configs.
 app.autodiscover_tasks()
