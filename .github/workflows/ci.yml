@@ -1,0 +1,41 @@
+name: CheckFormatAndTests
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches: [ master, developer ]
+
+jobs:
+  check_format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10.0
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+
+      - name: Install library
+        working-directory: ./backend
+        run: poetry install
+
+      - name: Run check balck
+        working-directory: ./backend
+        run: |
+          poetry run python -m black . --check --diff --exclude=migrations
+      - name: Run test
+        working-directory: ./backend
+        run: |
+          poetry run coverage run manage.py test
+      - name: Report Coverage
+        working-directory: ./backend
+        run: |
+          poetry run coverage report
+

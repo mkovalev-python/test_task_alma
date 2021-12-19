@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "testss"
+version = "0.1.0"
+description = ""
+authors = ["maximkovalev <mkovalevhse@yandex.ru>"]
+
+[tool.poetry.dependencies]
+python = "3.10.0"
+pandas = "^1.3.5"
+Django = "^4.0"
+celery = "^5.2.1"
+redis = "^4.0.2"
+djangorestframework = "^3.13.1"
+numpy = "^1.21.4"
+djangorestframework-queryfields = "^1.0.0"
+coverage = "^6.2"
+black = "^21.12b0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
