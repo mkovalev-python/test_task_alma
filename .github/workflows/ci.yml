@@ -23,19 +23,15 @@ jobs:
         uses: snok/install-poetry@v1
 
       - name: Install library
-        working-directory: ./backend
         run: poetry install
 
       - name: Run check balck
-        working-directory: ./backend
         run: |
           poetry run python -m black . --check --diff --exclude=migrations
       - name: Run test
-        working-directory: ./backend
         run: |
           poetry run coverage run manage.py test
       - name: Report Coverage
-        working-directory: ./backend
         run: |
           poetry run coverage report
 
